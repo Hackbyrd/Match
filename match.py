@@ -126,9 +126,10 @@ def update_matrix(filename, matrix):
 # args:
 #   team    -> mapping of team name to index and index to team name
 #   matrix  -> matrix of past data and past matchings
+#   exclude -> list of indexes to exclude in the matching
 # returns:
 #   match_str -> string of all matches
-def find_match(team, matrix):
+def find_match(team, matrix, exclude):
   stack   = []    # create stack of team members' indices
   least   = 0     # smallest number of matches
   passed  = 0     # number of elements passed with the same least number of matches
@@ -136,7 +137,10 @@ def find_match(team, matrix):
 
   # push everyone's index on stack
   for i in range(0, len(matrix)):
-    stack.append(i)
+
+    # only push indexes not in exclude
+    if (i not in exclude):
+      stack.append(i)
 
   # if odd number of members
   if len(stack) % 2 == 1:
@@ -244,18 +248,49 @@ def main(argv):
   team = read_team("team.txt")
   emails = read_emails("team.txt")
   matrix = read_matrix("matrix.txt", team)
+  exclude = {} # list of people to exclude
 
   # if no arguments, find matches
   if len(argv) == 1:
-    print find_match(team, matrix),
+    print find_match(team, matrix, exclude),
 
-  # if one argument, should be an email, get stats for that person
-  elif len(argv) == 2:
-    if argv[1] in emails:
-      print match_stats(emails[argv[1]], team, matrix),
+  # if one argument, check to see if "reset", "exclude", "stats"
+  else:
+
+    # reset matrix
+    if argv[1].lower() == "reset" or argv[1].lower() == "clear":
+      matrix = [[]] # empty matrix
+
+    # print stats
+    elif argv[1].lower() == "stats":
+      if len(argv) > 2:
+        for x in range(2, len(argv)):
+          if argv[x] in emails:
+            print match_stats(emails[argv[x]], team, matrix),
+          else:
+            print "Email does not exist!",
+            sys.exit()
+      else:
+        print "Please enter 1 or more emails.",
+
+    # find matches excluding certain emails
+    elif argv[1].lower() == "exclude":
+      if len(argv) > 2:
+        for x in range(2, len(argv)):
+          if argv[x] in emails:
+            exclude[emails[argv[x]]] = True
+
+          else:
+            print "Email does not exist!",
+            sys.exit()
+
+        print find_match(team, matrix, exclude),
+
+      else:
+        print "Please enter 1 or more emails.",
+
     else:
-      print "Email does not exist!",
-      sys.exit()
+      print "Invalid arguments, please try again.",
 
   # update matrix
   update_matrix("matrix.txt", matrix)
