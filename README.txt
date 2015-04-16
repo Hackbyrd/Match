@@ -9,8 +9,10 @@ Example: python match.py exclude jonathan@fiscalnote.com tim@fiscalnote.com gera
 >> python match.py custom jonathan@fiscalnote.com tim@fiscalnote.com earl@fiscalnote.com john@fisacalnote.com
 matches jonathan<->tim and earl<->john
 
-*Run Match where people are not matched with their team
->> python match.py weight
+Run Match where people are not matched with their team
+>> python match.py weight [integer]
+Example: python match.py weight 7
+This will increase weight between same team members by 7
 
 Find Individual Statistics:
 >> python match.py stats [email]
