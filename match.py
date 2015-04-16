@@ -127,10 +127,35 @@ def read_matrix(filename, team_dic):
 # end read_matrix
 # -----------------------------------------------------------------------------
 
+# Puts more weight on people on the same team so they don't get matched with each other
+# args:
+#   email_dic -> the mapping of email to index and index to email
+#   groups -> the mapping of a member email to group and group to array of emails
+#   matrix -> the mapping of index to number of times they get matched with someone
+#   weight -> an integer that represents how much to add to an index of the matrix for each team
+def weight_matrix(email_dic, groups, matrix, weight):
+
+  group_names = ["Founder", "Engineering", "Product", "Business", "Marketing", "Operations", "Policy", "Intern"]
+
+  # loop through each group name
+  for group_name in group_names:
+    group = groups[group_name] # get array of emails from a group
+
+    # loop through each email in group update count for every other email in the group
+    for email in group:
+      for match in group:
+        matrix[email_dic[email]][email_dic[match]] = matrix[email_dic[email]][email_dic[match]] + weight
+
+        # only need to add one way because it repeats
+        # matrix[email_dic[match]][email_dic[email]] = matrix[email_dic[match]][email_dic[email]] + weight
+
+# end weight_matrix
+# -----------------------------------------------------------------------------
+
 # updates current matrix of matchings with new changes
 # args:
 #   filename  -> name of file that stores all past matching data
-#   matrix    -> the mapping of team name to index and index to team name
+#   matrix    -> the mapping of index to number of times they get matched with someone
 def update_matrix(filename, matrix):
 
   # open file passed in to read
@@ -293,6 +318,19 @@ def main(argv):
     if argv[1].lower() == "reset" or argv[1].lower() == "clear":
       matrix = [[]] # empty matrix
 
+    # add weight to matrix
+    elif argv[1].lower() == "weight":
+
+      # check to see if a weight is entered
+      if len(argv) == 3:
+        weight_matrix(emails, groups, matrix, int(argv[2]))
+      elif len(argv) < 3:
+        print "Please enter in a weight",
+        sys.exit()
+      else:
+        print "Please enter only one weight",
+        sys.exit()
+
     # print stats
     elif argv[1].lower() == "stats":
       if len(argv) > 2:
@@ -304,6 +342,7 @@ def main(argv):
             sys.exit()
       else:
         print "Please enter 1 or more emails.",
+        sys.exit()
 
     # find matches excluding certain emails
     elif argv[1].lower() == "exclude":
@@ -320,9 +359,11 @@ def main(argv):
 
       else:
         print "Please enter 1 or more emails.",
+        sys.exit()
 
     else:
       print "Invalid arguments, please try again.",
+      sys.exit()
 
   # update matrix
   update_matrix("matrix.txt", matrix)
