@@ -11,7 +11,7 @@ import sys                  # for reading and writing to files
 # args:
 #   filename -> name of file that has team members and emails (ex. team.txt)
 # returns:
-#   team     -> returns a mapping of team name to index and index to team name
+#   team     -> returns a mapping of person name to index and index to person name
 def read_team(filename):
 
   team  = {}  # hash of team to index and index to team
@@ -59,6 +59,37 @@ def read_emails(filename):
   return emails # return mapping of member email to index and index to member email
 
 # end read_emails
+# -----------------------------------------------------------------------------
+
+# Read in all team member's groups
+# args:
+#   filename -> name of file that has team members emails and groups (ex. group.txt)
+# returns:
+#   groups   -> returns a mapping of a member email to group and group to array of emails
+def read_groups(filename):
+
+  groups  = {}  # hash of member email to index and index to member email
+
+  # open file passed in to read
+  file = open(filename, 'r')
+
+  # loop through each line of the file and read in name
+  for line in file:
+    line = line.strip(' \t\n\r')                # strip out whitespace and newline characters
+    email = line[:line.find("|")]               # get substring to extract email
+    group = line[line.find("|") + 1:]           # get substring to extract gorup
+    groups[email] = group                       # store email -> group
+
+    # if groups has this group already, append email, otherwise, create a new array of emails
+    if group in groups:
+      groups[group].append(email)
+    else:
+      groups[group] = [email]
+
+  file.close()  # close file
+  return groups # returns a mapping of a member email to group and group to array of emails
+
+# end read_groups
 # -----------------------------------------------------------------------------
 
 # read in all past data in terms of who has been matched with whom
@@ -247,6 +278,7 @@ def main(argv):
   # read in all information
   team = read_team("team.txt")
   emails = read_emails("team.txt")
+  groups = read_groups("group.txt")
   matrix = read_matrix("matrix.txt", team)
   exclude = {} # list of people to exclude
 
