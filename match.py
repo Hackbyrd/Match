@@ -183,22 +183,38 @@ def update_matrix(filename, matrix):
 #   team    -> mapping of team name to index and index to team name
 #   matrix  -> matrix of past data and past matchings
 #   exclude -> list of indexes to exclude in the matching
+#   custom  -> custom list of people to match
 # returns:
 #   match_str -> string of all matches
-def find_match(team, matrix, exclude):
-  stack   = []    # create stack of team members' indices
-  least   = 0     # smallest number of matches
-  passed  = 0     # number of elements passed with the same least number of matches
-  match_str = ""  # a string of all the matches
+def find_match(team, matrix, exclude, custom):
+  stack   = []            # create stack of team members' indices
+  least   = sys.maxint    # smallest number of matches, intialize to largest integer
+  passed  = 0             # number of elements passed with the same least number of matches
+  match_str = ""          # a string of all the matches
 
-  # push everyone's index on stack
-  for i in range(0, len(matrix)):
+  # make custom matches
+  for i in xrange(0, len(custom), 2):
 
-    # only push indexes not in exclude
-    if (i not in exclude):
+    # if trying to make a custom match with someone who has been excluded, then print error and quit
+    if custom[i] in exclude or custom[i + 1] in exclude:
+      print "Cannot match someone who has been excluded.",
+      sys.exit()
+
+    # update matrix match count and update string of matches
+    matrix[custom[i]][custom[i + 1]] = matrix[custom[i]][custom[i + 1]] + 1
+    matrix[custom[i + 1]][custom[i]] = matrix[custom[i + 1]][custom[i]] + 1
+    match_str = match_str + team[custom[i]] + " <---> " + team[custom[i + 1]] + "\n"
+
+    # add to exclude list
+    exclude[custom[i]] = True
+    exclude[custom[i + 1]] = True
+
+  # push everyone's index on stack but only push indexes not in exclude list
+  for i in xrange(0, len(matrix), 1):
+    if i not in exclude:
       stack.append(i)
 
-  # if odd number of members
+  # if odd number of members, one person will be by themselves
   if len(stack) % 2 == 1:
     temp = -1 # the person who will not be matched
 
@@ -306,10 +322,11 @@ def main(argv):
   groups = read_groups("group.txt")
   matrix = read_matrix("matrix.txt", team)
   exclude = {} # list of people to exclude
+  custom = [] # custom list of people to match, 0 match with 1, 2 match with 3 etc. Length should be even
 
   # if no arguments, find matches
   if len(argv) == 1:
-    print find_match(team, matrix, exclude),
+    print find_match(team, matrix, exclude, custom),
 
   # if one argument, check to see if "reset", "exclude", "stats"
   else:
@@ -355,7 +372,24 @@ def main(argv):
             print "Email does not exist!",
             sys.exit()
 
-        print find_match(team, matrix, exclude),
+        print find_match(team, matrix, exclude, custom),
+
+      else:
+        print "Please enter 1 or more emails.",
+        sys.exit()
+
+    # custom matching
+    elif argv[1].lower() == "custom":
+      if len(argv) > 2:
+        for x in range(2, len(argv)):
+          if argv[x] in emails:
+            custom.append(emails[argv[x]])
+
+          else:
+            print "Email does not exist!",
+            sys.exit()
+
+        print find_match(team, matrix, exclude, custom),
 
       else:
         print "Please enter 1 or more emails.",
