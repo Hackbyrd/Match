@@ -43,3 +43,7 @@ Jacqueline Chen|jacqueline@fiscalnote.com
 Grant Jung|grant@fiscalnote.com
 Juliana Pyo|juliana@fiscalnote.com
 Kris Salvador|kris@fiscalnote.com
+Amanda Wynter|amanda@fiscalnote.com
+Trevor Gurgick|trevor@fiscalnote.com
+Bill Palombi|bill@fiscalnote.com
+Rishi Banerjee|rishi@fiscalnote.com
