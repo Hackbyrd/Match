@@ -43,3 +43,7 @@ jacqueline@fiscalnote.com|Intern
 grant@fiscalnote.com|Intern
 juliana@fiscalnote.com|Intern
 kris@fiscalnote.com|Intern
+amanda@fiscalnote.com|Business
+trevor@fiscalnote.com|Business
+bill@fiscalnote.com|Business
+rishi@fiscalnote.com|Policy
