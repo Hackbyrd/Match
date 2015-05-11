@@ -4,7 +4,7 @@ Run Match Algorithm:
 Run Match Algorithm excluding 1 or more people:
 >> python match.py exclude [email] [email] [email] ...
 Example: python match.py exclude jonathan@fiscalnote.com tim@fiscalnote.com gerald@fiscalnote.com
-python match.py exclude brian@fiscalnote.com jacqueline@fiscalnote.com earl@fiscalnote.com
+python match.py exclude jacqueline@fiscalnote.com earl@fiscalnote.com rebekah@fiscalnote.com brian@fiscalnote.com
 
 Run Customized Matches must be even amount of arguments.
 >> python match.py custom jonathan@fiscalnote.com tim@fiscalnote.com earl@fiscalnote.com john@fisacalnote.com
