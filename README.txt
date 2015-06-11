@@ -48,4 +48,4 @@ tony@fiscalnote.com
 Remote:
 brian@fiscalnote.com
 
-python match.py exclude jacqueline@fiscalnote.com kris@fiscalnote.com rebekah@fiscalnote.com brian@fiscalnote.com kandel@fiscalnote.com thomas@fiscalnote.com
+python match.py exclude jacqueline@fiscalnote.com kris@fiscalnote.com rebekah@fiscalnote.com brian@fiscalnote.com kandel@fiscalnote.com tom@fiscalnote.com
