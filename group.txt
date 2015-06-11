@@ -27,7 +27,7 @@ crystal@fiscalnote.com|Business
 elvin@fiscalnote.com|Business
 rebecca@fiscalnote.com|Business
 daryl@fiscalnote.com|Business
-tunji@fiscalnote.com|Business
+kandel@fiscalnote.com|Business
 kierce@fiscalnote.com|Business
 anna@fiscalnote.com|Business
 plumley@fiscalnote.com|Marketing
@@ -47,3 +47,7 @@ amanda@fiscalnote.com|Business
 trevor@fiscalnote.com|Business
 bill@fiscalnote.com|Business
 rishi@fiscalnote.com|Policy
+daniel@fiscalnote.com|Engineering
+tom@fiscalnote.com|Business
+audrey@fiscalnote.com|Marketing
+tony@fiscalnote.com|Intern

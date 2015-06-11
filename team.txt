@@ -27,7 +27,7 @@ Crystal Yan|crystal@fiscalnote.com
 Elvin Merlo|elvin@fiscalnote.com
 Rebecca Brown|rebecca@fiscalnote.com
 Daryl Hok|daryl@fiscalnote.com
-Tunji Williams|tunji@fiscalnote.com
+Mike Kandel|kandel@fiscalnote.com
 Gerald Kierce|kierce@fiscalnote.com
 Anna Tupy|anna@fiscalnote.com
 Amy Plumley|plumley@fiscalnote.com
@@ -47,3 +47,7 @@ Amanda Wynter|amanda@fiscalnote.com
 Trevor Gurgick|trevor@fiscalnote.com
 Bill Palombi|bill@fiscalnote.com
 Rishi Banerjee|rishi@fiscalnote.com
+Daniel Argyle|daniel@fiscalnote.com
+Thomas Guthrie|tom@fiscalnote.com
+Audrey Sullivan|audrey@fiscalnote.com
+Tony Do|tony@fiscalnote.com
