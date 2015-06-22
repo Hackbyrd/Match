@@ -51,3 +51,10 @@ Daniel Argyle|daniel@fiscalnote.com
 Thomas Guthrie|tom@fiscalnote.com
 Audrey Sullivan|audrey@fiscalnote.com
 Tony Do|tony@fiscalnote.com
+Taj Chadha|taj@fiscalnote.com
+Vincent Eberle|vincent@fiscalnote.com
+Alex Fein|alex@fiscalnote.com
+Ashley Holofcener|ashley@fiscalnote.com
+Hadley Roberts|hadley@fiscalnote.com
+Wesley Sluss|wesley@fiscalnote.com
+Yojin Yoon|yojin@fiscalnote.com

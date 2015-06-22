@@ -51,3 +51,10 @@ daniel@fiscalnote.com|Engineering
 tom@fiscalnote.com|Business
 audrey@fiscalnote.com|Marketing
 tony@fiscalnote.com|Intern
+taj@fiscalnote.com|Business
+vincent@fiscalnote.com|Engineering
+alex@fiscalnote.com|Business
+ashley@fiscalnote.com|Business
+hadley@fiscalnote.com|Business
+wesley@fiscalnote.com|Engineering
+yojin@fiscalnote.com|Business

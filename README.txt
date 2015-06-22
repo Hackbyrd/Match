@@ -15,7 +15,7 @@ Run Match where people are not matched with their team
 Example: python match.py weight 7
 This will increase weight between same team members by 7
 
-When adding more people, first do a negative weight to remove weight, then add new members and then add weight again...
+**When adding more people, first do a negative weight to remove weight, then add new members and then add weight again...
 1. python match.py weight -7
 2. Add new team members to group.txt and team.txt
 3. python match.py weight 7
